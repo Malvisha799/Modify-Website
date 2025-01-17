@@ -151,6 +151,7 @@
   <style>
     .navbar-nav {
       margin-left: auto;
+      /* position: sticky; */
     }
     .custom-dropdown-menu {
       width: 690px;
@@ -209,7 +210,7 @@
     cursor: pointer;
     }
     .alt-nav {
-  position: relative;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -233,10 +234,17 @@
   background: linear-gradient(to right, #4867aa, #f83f37);
 }
 .navbar {
+  position: sticky; /* Makes the navigation bar stick to the top */
+  top: 0; /* Aligns the navigation bar to the top of the viewport */
+  z-index: 1000; /* Ensures it stays above other content */
   display: flex;
   width: 100%;
-  justify-content: space-between; /* Ensure proper spacing for other elements like logo and right-side items */
+  justify-content: space-between;
   align-items: center;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  padding: 10px 20px;
 }
 
 .custom-dropdown-menu {
@@ -247,6 +255,7 @@
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: none;
+  z-index: 1100;
 }
 .custom-dropdown-menu .row {
   margin: 0;
@@ -327,6 +336,7 @@
   /* padding-bottom: 2px; Space for the border */
   padding-bottom: 0px; /* Ensure no padding conflict */
   box-sizing: border-box;
+
 }
 /* .tabNameWrapperStyle:hover + .dropDownContainer {
    display: flex;
@@ -564,7 +574,6 @@
     <nav
       class="navbar navbar-expand-sm header-navbar py-10"
       style="background: linear-gradient(90deg, #4867aa, #003b73)"
-      id="navbar_top"
     >
       <div class="container px-0">
         <div class="navbar-header support-hours h-event">
@@ -1687,149 +1696,6 @@ function displayInfo(infoType, index) {
     });
   </script>
 
-  <style>
-    /* Form Container */
-    .container.d-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: start; 
-        gap: 30px;
-        flex-wrap: wrap;
-        position: relative;
-    }
-    .callback-form {
-        background-color: #ffffff;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        width: 395px;
-        top: 150px;
-        right: 50px;
-        position: absolute;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    }
-    .callback-form.sticky {
-        position: fixed;
-        top: 50px;
-        right: 10px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        padding: 0px;
-        background-color: #5a6a79;
-        color: #e3edfd;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    }
-    .callback-form.sticky i {
-        font-size: 24px;
-    }
-    .callback-form.sticky:hover {
-        background-color: #002b5b;
-
-    }
-    .callback-form.sticky .form-content {
-        display: none;
-    }
-    .callback-form.expanded {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        width: 350px;
-        height: auto;
-        border-radius: 10px;
-        background-color: #697fad;
-        padding: 20px;
-    }
-    .callback-form.expanded .form-content {
-        display: block;
-    }
-    .callback-form.expanded i {
-        display: block;
-    }
-    .callback-form h2 {
-        color: #173069;
-        margin-bottom: 20px;
-        font-size: 20px;
-        position: relative;
-    }
-    
-    .callback-form h2::after {
-        content: "";
-        width: 50px;
-        height: 3px;
-        background-color: #173069;
-        display: block;
-        margin: 10px auto 0;
-        border-radius: 3px;
-    }
-    /* Input Fields */
-    .callback-form input {
-        width: 100%;
-        padding: 10px;
-        margin: 7px 0;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
-    
-    /* Submit Button */
-    .callback-form button {
-        width: 100%;
-        padding: 10px;
-        background-color: #003b73;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 6px #4867AA;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    
-    .callback-form button:hover {
-        background-color: #003b73;
-    }
-    .callback-form button:hover .stars {
-        display: block;
-        filter: drop-shadow(0 0 10x #fffdef);
-    }
-    
-    /* Google Reviews Section */
-    .google-reviews {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    
-    .google-reviews .google-logo {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 5px;
-    }
-    
-    .google-reviews p {
-        font-size: 12px;
-        color: #555;
-        margin: 0;
-    }
-    
-    .google-reviews span {
-        font-size: 14px;
-        color: #f4b400; /* Gold color for stars */
-    }
-    </style>
-
     <div class="card">
         <div class="card-img card-img-bg text-white " style="background: linear-gradient(90deg, #252E46, #27304D, #293551);">
             <div class="chat-options">
@@ -1957,7 +1823,7 @@ chatButton.addEventListener("click", () => {
 });
 </script>
             <div class="card-img-overlay text-white pt-60 pb-10">
-               <div class="callback-form" id="callbackForm">
+               <div class="callback-form sticky" id="callbackForm">
                     <i class="fas fa-envelope"></i>
                     <div class="form-content">
                      <h2>REQUEST A CALL BACK</h2>
@@ -1971,6 +1837,149 @@ chatButton.addEventListener("click", () => {
                       </form>
                     </div>  
                 </div>
+                <style>
+                    /* Form Container */
+                    .container.d-flex {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: start; 
+                        gap: 30px;
+                        flex-wrap: wrap;
+                        position: relative;
+                    }
+                    .callback-form {
+                        background-color: #ffffff;
+                        border-radius: 10px;
+                        padding: 20px;
+                        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+                        text-align: center;
+                        width: 395px;
+                        top: 150px;
+                        right: 50px;
+                        position: relative;
+                        transition: all 0.3s ease;
+                        z-index: 1000;
+                    }
+                    .callback-form.sticky {
+                        position: fixed;
+                        top: 160px;
+                        right: 10px;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        padding: 0px;
+                        background-color: #5a6a79;
+                        color: #e3edfd;
+                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        z-index: 900;
+                    }
+                    .callback-form.sticky i {
+                        font-size: 24px;
+                    }
+                    .callback-form.sticky:hover {
+                        background-color: #002b5b;
+                
+                    }
+                    .callback-form.sticky .form-content {
+                        display: none;
+                    }
+                    .callback-form.expanded {
+                        position: fixed;
+                        top: 10px;
+                        right: 10px;
+                        width: 350px;
+                        height: auto;
+                        border-radius: 10px;
+                        background-color: #697fad;
+                        padding: 20px;
+                    }
+                    .callback-form.expanded .form-content {
+                        display: block;
+                    }
+                    .callback-form.expanded i {
+                        display: block;
+                    }
+                    .callback-form h2 {
+                        color: #173069;
+                        margin-bottom: 20px;
+                        font-size: 20px;
+                        position: relative;
+                    }
+                    
+                    .callback-form h2::after {
+                        content: "";
+                        width: 50px;
+                        height: 3px;
+                        background-color: #173069;
+                        display: block;
+                        margin: 10px auto 0;
+                        border-radius: 3px;
+                    }
+                    /* Input Fields */
+                    .callback-form input {
+                        width: 100%;
+                        padding: 10px;
+                        margin: 7px 0;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        box-sizing: border-box;
+                        font-size: 14px;
+                    }
+                    
+                    /* Submit Button */
+                    .callback-form button {
+                        width: 100%;
+                        padding: 10px;
+                        background-color: #003b73;
+                        color: #ffffff;
+                        border: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+                        box-shadow: 0 4px 6px #4867AA;
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                    }
+                    
+                    .callback-form button:hover {
+                        background-color: #003b73;
+                    }
+                    .callback-form button:hover .stars {
+                        display: block;
+                        filter: drop-shadow(0 0 10x #fffdef);
+                    }
+                    
+                    /* Google Reviews Section */
+                    .google-reviews {
+                        margin-top: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                    
+                    .google-reviews .google-logo {
+                        width: 30px;
+                        height: 30px;
+                        margin-bottom: 5px;
+                    }
+                    
+                    .google-reviews p {
+                        font-size: 12px;
+                        color: #555;
+                        margin: 0;
+                    }
+                    
+                    .google-reviews span {
+                        font-size: 14px;
+                        color: #f4b400; /* Gold color for stars */
+                    }
+                    </style>
                 <div class="container pl-0">
                     <div class="container container-expand-sm py-10">
                         <div class="welcome-content">
@@ -2012,15 +2021,15 @@ chatButton.addEventListener("click", () => {
     <script>
         const callbackForm = document.getElementById('callbackForm');
 
-        // Track scroll position and toggle sticky mode
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                callbackForm.classList.add('sticky');
-                callbackForm.classList.remove('expanded');
-            } else {
-                callbackForm.classList.remove('sticky');
-            }
-        });
+        // // Track scroll position and toggle sticky mode
+        // window.addEventListener('scroll', () => {
+        //     if (window.scrollY > 50) {
+        //         callbackForm.classList.add('sticky');
+        //         callbackForm.classList.remove('expanded');
+        //     } else {
+        //         callbackForm.classList.remove('sticky');
+        //     }
+        // });
 
         // Toggle the expanded state on click
         callbackForm.addEventListener('click', () => {
